@@ -28,7 +28,7 @@ clear-cache:
 	$(SAIL) artisan route:clear
 	$(SAIL) artisan config:clear
 
-run_all: create-test redirect-test stats-test
+run_all: migrate create-test redirect-test stats-test clear-cache
 	@echo "Все тесты пройдены"
 	@rm -f .short-url
 
