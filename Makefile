@@ -28,7 +28,7 @@ clear-cache:
 	$(SAIL) artisan route:clear
 	$(SAIL) artisan config:clear
 
-run_all: migrate create-test redirect-test stats-test clear-cache
+run-all: migrate create-test redirect-test stats-test clear-cache
 	@echo "Все тесты пройдены"
 	@rm -f .short-url
 
@@ -41,7 +41,7 @@ create-test:
 		\$$link = \App\Models\Link::create(['user_id' => \$$user->id, 'original_url' => \$$randomUrl, 'code' => \Illuminate\Support\Str::random(6)]); \
 		echo \$$link->original_url .PHP_EOL . \$$link->code;"); \
 	echo "$$TINKER_OUTPUT" | head -n 1 > .origin-url; \
-	echo "$$TINKER_OUTPUT" | tail -n 1 > .short-url; \
+	echo "$$TINKER_OUTPUT" | tail -n 1 > .short-url; 
 	@echo "Оригинальный url: $$(cat .origin-url)"
 	@echo "short-url сгенерирован: $(URL_BASE)/$$(cat .short-url)"
 	@rm -f .origin-url
