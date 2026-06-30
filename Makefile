@@ -1,4 +1,4 @@
-.PHONY: init up down restart migrate fresh clear-cache run_all create-test redirect-test stats-test
+.PHONY: init up down restart migrate fresh clear-cache run-all create-test redirect-test stats-test
 
 SAIL = ./vendor/bin/sail
 URL_BASE = http://localhost
@@ -28,7 +28,7 @@ clear-cache:
 	$(SAIL) artisan route:clear
 	$(SAIL) artisan config:clear
 
-run-all: migrate create-test redirect-test stats-test clear-cache
+run-all: create-test redirect-test stats-test clear-cache
 	@echo "Все тесты пройдены"
 	@rm -f .short-url
 
